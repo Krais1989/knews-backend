@@ -1,4 +1,4 @@
-﻿using KNews.Core.Services.CommunityRequests;
+﻿using KNews.Core.Services.Communities.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

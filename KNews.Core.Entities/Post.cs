@@ -13,8 +13,7 @@ namespace KNews.Core.Entities
         public DateTime? UpdateDate { get; set; }
         public DateTime? DeleteDate { get; set; }
         public EPostStatus Status { get; set; }
-        public long? CommunityID { get; set; }
-
-        public XCommunityPost XCommunityPosts { get; set; }
+        public long CommunityID { get; set; }
+        public Community Community { get; set; }
     }
 }

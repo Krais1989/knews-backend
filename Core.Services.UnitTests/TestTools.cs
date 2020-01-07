@@ -2,12 +2,19 @@
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using Moq;
+using System;
 using System.Threading;
 
 namespace KNews.Core.Services.UnitTests
 {
     public static class TestTools
     {
+        public static readonly CoreDomainOptions CoreOptions = new CoreDomainOptions()
+        {
+            UpdateAvailablePeriod = TimeSpan.FromHours(1),
+            DefaultCommunityID = 1
+        };
+
         public static ILogger<T> MockLogger<T>() => Mock.Of<ILogger<T>>();
 
         public static IDistributedCache MockCache() => Mock.Of<IDistributedCache>();

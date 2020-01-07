@@ -3,10 +3,35 @@ using System.Collections.Generic;
 
 namespace KNews.Core.Entities
 {
-    public enum ECommunityPrivacyType : byte
+    /// <summary>
+    /// Право чтения в сообществе
+    /// </summary>
+    public enum ECommunityReadPermission : byte
     {
-        Open = 0,
-        Closed
+        /// <summary>
+        /// Просматривать группу могут все
+        /// </summary>
+        All = 0,
+        /// <summary>
+        /// Просматривать группу могут лишь её участники
+        /// </summary>
+        MembersOnly
+    }
+
+    /// <summary>
+    /// Право создание постов в сообществе
+    /// </summary>
+    public enum ECommunityPostCreatePermission : byte
+    {
+        All,
+        MembersOnly,
+        ModeratorOnly
+    }
+
+    public enum ECommunityPostDeletePermission : byte
+    {
+        AuthorOnly,
+        ModeratorOnly
     }
 
     public class Community
@@ -16,7 +41,10 @@ namespace KNews.Core.Entities
         public string Description { get; set; }
         public string Rules { get; set; }
         public ECommunityStatus Status { get; set; }
-        public ECommunityPrivacyType PrivacyType { get; set; }
+        public ECommunityReadPermission ReadPermissions { get; set; }
+        public ECommunityPostCreatePermission CreatePostPermissions { get; set; }
+        public ECommunityPostDeletePermission DeletePermissions { get; set; }
+
         public DateTime CreateDate { get; set; }
 
         public long MembersCount { get; set; }

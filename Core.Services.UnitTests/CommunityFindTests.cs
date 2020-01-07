@@ -1,6 +1,6 @@
 ﻿using KNews.Core.Persistence;
-using KNews.Core.Services.CommunityRequests;
-using KNews.Core.Services.CommunityValidators;
+using KNews.Core.Services.Communities.Handlers;
+using KNews.Core.Services.Communities.Validators;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading;

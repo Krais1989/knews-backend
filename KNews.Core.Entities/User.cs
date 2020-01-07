@@ -22,7 +22,7 @@ namespace KNews.Core.Entities
 
         public string ImageHash { get; set; }
 
-        public IEnumerable<XCommunityUser> CommunityUsers { get; set; }
+        public IEnumerable<XCommunityUser> XCommunityUsers { get; set; }
         public IEnumerable<UserInvitation> Invitations { get; set; }
     }
 }
