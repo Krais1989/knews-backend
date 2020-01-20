@@ -7,13 +7,25 @@ namespace KNews.Core.Services.Posts.Validators
 {
     public class PostDeleteValidatorDto
     {
-        public DateTime PostCreateDate { get; set; }
-        public bool CurUserIsAuthor { get; set; }
+        public DateTime PostCreateDate { get; private set; }
+        public bool CurUserIsAuthor { get; private set; }
+        public EUserStatus CurUserStatus { get; private set; }
+        public EUserMembershipStatus CurUserMembership { get; private set; }
+        public ECommunityPostDeletePermissions CommPostDeletePermission { get; private set; }
 
-        public EUserStatus CurUserStatus { get; set; }
-        public EXUserCommunityType? CurUserMembership { get; set; }
-
-        public ECommunityPostDeletePermission CommPostDeletePermission { get; set; }
+        public PostDeleteValidatorDto(
+            DateTime postCreateDate,
+            bool curUserIsAuthor,
+            EUserStatus curUserStatus,
+            EUserMembershipStatus curUserMembership,
+            ECommunityPostDeletePermissions commPostDeletePermission)
+        {
+            PostCreateDate = postCreateDate;
+            CurUserIsAuthor = curUserIsAuthor;
+            CurUserStatus = curUserStatus;
+            CurUserMembership = curUserMembership;
+            CommPostDeletePermission = commPostDeletePermission;
+        }
     }
 
     public class PostDeleteValidator : AbstractValidator<PostDeleteValidatorDto>
@@ -25,14 +37,14 @@ namespace KNews.Core.Services.Posts.Validators
             /* Или: Пользователь должен быть модератором сообщества, в случае если пост создан в этом сообществе */
 
             RuleFor(dto => dto.CurUserMembership)
-                .NotNull()
-                .Equal(EXUserCommunityType.Moderator)
-                .When(dto => dto.CommPostDeletePermission == ECommunityPostDeletePermission.ModeratorOnly)
-                    .WithMessage($"Action forbidden.");
+                .Equal(EUserMembershipStatus.Moderator)
+                .When(dto => dto.CommPostDeletePermission == ECommunityPostDeletePermissions.Moderators)
+                .WithMessage($"Action forbidden.");
 
             RuleFor(dto => dto.CurUserIsAuthor)
                 .Equal(true)
-                .When(dto => dto.CommPostDeletePermission == ECommunityPostDeletePermission.AuthorOnly)
+                .Unless(dto => dto.CurUserMembership == EUserMembershipStatus.Moderator)
+                .When(dto => dto.CommPostDeletePermission == ECommunityPostDeletePermissions.Authors)
                 .WithMessage($"Action forbidden."); ;
         }
     }

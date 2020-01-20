@@ -38,13 +38,13 @@ namespace KNews.Core.Services.Posts.Handlers
 
     public class PostCreateRequestHandler : IRequestHandler<PostCreateRequest, PostCreateResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly ILogger<PostCreateRequestHandler> _logger;
         private readonly IValidator<PostCreateValidator> _validator;
         private readonly IOptions<CoreDomainOptions> _options;
 
         public PostCreateRequestHandler(
-            NewsContext context,
+            CoreContext context,
             ILogger<PostCreateRequestHandler> logger,
             IValidator<PostCreateValidator> validator,
             IOptions<CoreDomainOptions> options)
@@ -61,6 +61,18 @@ namespace KNews.Core.Services.Posts.Handlers
             var community = await _context.Communities.FirstOrDefaultAsync(e => e.ID == request.CommunityID);
             var authorInCommunity = await _context.XCommunityUsers.FirstOrDefaultAsync(e => e.CommunityID == request.CommunityID && e.UserID == request.CurUserID);
 
+            var validatorDto = new PostCreateValidatorDto
+            (
+                communityCreatePermission : community.CreatePostPermissions,
+                communityStatus : community.Status,
+                authorStatus : author.Status,
+                currentUserMembership : authorInCommunity?.Status ?? EUserMembershipStatus.None,
+                postTitle : request.Title,
+                postContent : request.Content
+            );
+
+            _validator.Validate(validatorDto);
+
             var entity = new Post()
             {
                 Title = request.Title,
@@ -71,20 +83,8 @@ namespace KNews.Core.Services.Posts.Handlers
                 UpdateDate = null,
                 Status = EPostStatus.Created,
                 AuthorID = request.CurUserID,
-                CommunityID = request.CommunityID.HasValue ? request.CommunityID.Value : _options.Value.DefaultCommunityID
+                CommunityID = request.CommunityID ?? _options.Value.DefaultCommunityID
             };
-
-            var validatorDto = new PostCreateValidatorDto()
-            {
-                CommunityCreatePermission = community.CreatePostPermissions,
-                CommunityStatus = community.Status,
-                AuthorStatus = author.Status,
-                CurrentUserMembership = authorInCommunity != null ? authorInCommunity.Type : EXUserCommunityType.None,
-                PostTitle = entity.Title,
-                PostContent = entity.Content
-            };
-
-            _validator.Validate(validatorDto);
 
             _context.Posts.Add(entity);
             if (request.SaveChanges)

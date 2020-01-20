@@ -21,7 +21,8 @@ namespace KNews.Core.Services.Posts.Handlers
     public class PostFindRequest : IRequest<PostFindResponse>
     {
         public string Text { get; set; }
-        public long? UserID { get; set; }
+        public long? AuthorID { get; set; }
+        public long? CommunityID { get; set; }
     }
 
     public class PostFindRequestHandler : IRequestHandler<PostFindRequest, PostFindResponse>
@@ -29,13 +30,13 @@ namespace KNews.Core.Services.Posts.Handlers
         private readonly IEntityMapper<Post, PostShort> _mapper;
         private readonly ILogger<PostFindRequestHandler> _logger;
         private readonly IValidator<PostFindValidator> _validator;
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
 
         public PostFindRequestHandler(
             IEntityMapper<Post, PostShort> mapper,
             ILogger<PostFindRequestHandler> logger,
             IValidator<PostFindValidator> validator,
-            NewsContext context)
+            CoreContext context)
         {
             _mapper = mapper;
             _logger = logger;
@@ -45,22 +46,25 @@ namespace KNews.Core.Services.Posts.Handlers
 
         public async Task<PostFindResponse> Handle(PostFindRequest request, CancellationToken cancellationToken)
         {
-            var curUser = request.UserID.HasValue
-                ? await _context.Users.FirstOrDefaultAsync(e => e.ID == request.UserID)
+            var curUser = request.AuthorID.HasValue
+                ? await _context.Users.FirstOrDefaultAsync(e => e.ID == request.AuthorID)
                 : null;
 
-            var validatorDto = new PostFindValidatorDto()
-            {
-                Text = request.Text,
-                CurUserStatus = curUser != null ? (EUserStatus?)curUser.Status : null,
-                IsAnonymous = curUser == null
-            };
+            var validatorDto = new PostFindValidatorDto
+            (
+                text: request.Text
+            );
             _validator.Validate(validatorDto);
 
-            var data = await _context.Posts.AsNoTracking()
-                .Where(p => p.Title.Contains(request.Text) || p.Content.Contains(request.Text))
-                .Select(p => _mapper.Map(p))
-                .ToArrayAsync();
+            var query = _context.Posts.AsNoTracking().AsQueryable();
+            if (!string.IsNullOrEmpty(request.Text))
+                query = query.Where(p => p.Title.Contains(request.Text) || p.Content.Contains(request.Text));
+            if (request.AuthorID != null)
+                query = query.Where(p => p.AuthorID == request.AuthorID);
+            if (request.CommunityID != null)
+                query = query.Where(p => p.CommunityID == request.CommunityID);
+
+            var data = await query.Select(_mapper.MapExpr).ToArrayAsync();
 
             return new PostFindResponse() { Data = data };
         }

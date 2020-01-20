@@ -11,6 +11,7 @@ using Z.EntityFramework.Plus;
 using System.Linq;
 using KNews.Core.Entities;
 using KNews.Core.Services.Posts.Entities;
+using KNews.Core.Services.Shared.Mappers;
 
 namespace KNews.Core.Services.Posts.Handlers
 {
@@ -22,12 +23,18 @@ namespace KNews.Core.Services.Posts.Handlers
 
     public class PostGetFullRequestHandler : IRequestHandler<PostGetFullRequest, PostFull>
     {
+        private readonly IEntityMapper<Post, PostFull> _mapper;
         private readonly ILogger<PostGetFullRequestHandler> _logger;
         private readonly IValidator<PostGetFullValidator> _validator;
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
 
-        public PostGetFullRequestHandler(ILogger<PostGetFullRequestHandler> logger, IValidator<PostGetFullValidator> validator, NewsContext context)
+        public PostGetFullRequestHandler(
+            IEntityMapper<Post, PostFull> mapper,
+            ILogger<PostGetFullRequestHandler> logger,
+            IValidator<PostGetFullValidator> validator,
+            CoreContext context)
         {
+            _mapper = mapper;
             _logger = logger;
             _validator = validator;
             _context = context;
@@ -43,24 +50,16 @@ namespace KNews.Core.Services.Posts.Handlers
                 .IncludeFilter(e => e.XCommunityUsers.FirstOrDefault(xcu => xcu.CommunityID == post.CommunityID))
                 .FirstOrDefaultAsync(e => e.ID == request.CurUserID);
 
-            var validatorDto = new PostGetFullValidatorDto()
-            {
-                GetByAuthor = post.AuthorID == curUser.ID,
-                PostStatus = post.Status,
-                CommunityReadPermissions = post.Community.ReadPermissions,
-                MemberStatus = curUser.XCommunityUsers != null ? (EXUserCommunityType?)curUser.XCommunityUsers.First().Type : null,
-            };
+            var validatorDto = new PostGetFullValidatorDto
+            (
+                getByAuthor: post.AuthorID == curUser.ID,
+                postStatus: post.Status,
+                communityReadPermissions: post.Community.ReadPermissions,
+                curUserMembershipStatus: curUser.XCommunityUsers.FirstOrDefault()?.Status ?? EUserMembershipStatus.None
+            );
             _validator.Validate(validatorDto);
-
-            var response = new PostFull()
-            {
-                ID = post.ID,
-                Title = post.Title,
-                Content = post.Content,
-                ShortContent = post.ShortContent
-            };
-
-            return response;
+            
+            return _mapper.MapExpr.Compile()(post);
         }
     }
 }

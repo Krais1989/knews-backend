@@ -7,7 +7,7 @@ namespace KNews.Core.Services.UnitTests
 {
     public class TestNewsContextBuilder
     {
-        private NewsContext _testContext;
+        private CoreContext _testContext;
 
         private int _usersCount;
         private Func<int, User> _usersFunc;
@@ -18,7 +18,7 @@ namespace KNews.Core.Services.UnitTests
         private int _postsCount;
         private Func<int, Post> _postsFunc;
 
-        private Func<int, int, EXUserCommunityType?> _userCommunityFunc;
+        private Func<int, int, EUserMembershipStatus?> _userCommunityFunc;
         private Func<int, int, bool> _postCommunityFunc;
 
         public TestNewsContextBuilder SetUsers(int count, Func<int, User> func = null)
@@ -42,7 +42,7 @@ namespace KNews.Core.Services.UnitTests
             return this;
         }
 
-        public TestNewsContextBuilder SetUserInCommunity(Func<int, int, EXUserCommunityType?> func)
+        public TestNewsContextBuilder SetUserInCommunity(Func<int, int, EUserMembershipStatus?> func)
         {
             _userCommunityFunc = func;
             return this;
@@ -54,13 +54,13 @@ namespace KNews.Core.Services.UnitTests
             return this;
         }
 
-        public NewsContext Build()
+        public CoreContext Build()
         {
-            var testContextOptions = new DbContextOptionsBuilder<NewsContext>()
+            var testContextOptions = new DbContextOptionsBuilder<CoreContext>()
                 .UseInMemoryDatabase(databaseName: "testdb")
                 .Options;
 
-            _testContext = new NewsContext(testContextOptions);
+            _testContext = new CoreContext(testContextOptions);
 
             for (int i = 0; i < _usersCount; i++)
             {

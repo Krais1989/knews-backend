@@ -37,12 +37,12 @@ namespace KNews.Core.Services.Communities.Handlers
 
     public class CommunityFindRequestHandler : IRequestHandler<CommunityFindRequest, CommunityFindResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly ILogger<CommunityFindRequestHandler> _logger;
         private readonly IValidator<CommunityFindRequest> _validator;
         private readonly IDistributedCache _cache;
 
-        public CommunityFindRequestHandler(NewsContext context, ILogger<CommunityFindRequestHandler> logger, IValidator<CommunityFindRequest> validator, IDistributedCache cache)
+        public CommunityFindRequestHandler(CoreContext context, ILogger<CommunityFindRequestHandler> logger, IValidator<CommunityFindRequest> validator, IDistributedCache cache)
         {
             _context = context;
             _logger = logger;

@@ -34,9 +34,9 @@ namespace KNews.Core.Services.Posts.Handlers
     {
         private readonly ILogger<PostDeleteRequestHandler> _logger;
         private readonly IValidator<PostDeleteValidator> _validator;
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
 
-        public PostDeleteRequestHandler(ILogger<PostDeleteRequestHandler> logger, IValidator<PostDeleteValidator> validator, NewsContext context)
+        public PostDeleteRequestHandler(ILogger<PostDeleteRequestHandler> logger, IValidator<PostDeleteValidator> validator, CoreContext context)
         {
             _logger = logger;
             _validator = validator;
@@ -53,14 +53,14 @@ namespace KNews.Core.Services.Posts.Handlers
                 .IncludeFilter(u => u.XCommunityUsers.FirstOrDefault(xcu => xcu.CommunityID == post.CommunityID))
                 .FirstOrDefaultAsync();
 
-            var validatorDto = new PostDeleteValidatorDto()
-            {
-                CommPostDeletePermission = post.Community.DeletePermissions,
-                PostCreateDate = post.CreateDate,
-                CurUserIsAuthor = curUser.ID == post.AuthorID,
-                CurUserStatus = curUser.Status,
-                CurUserMembership = curUser.XCommunityUsers.Any() ? (EXUserCommunityType?)curUser.XCommunityUsers.FirstOrDefault().Type : null
-            };
+            var validatorDto = new PostDeleteValidatorDto
+            (
+                commPostDeletePermission: post.Community.DeletePermissions,
+                postCreateDate: post.CreateDate,
+                curUserIsAuthor: curUser.ID == post.AuthorID,
+                curUserStatus: curUser.Status,
+                curUserMembership: curUser.XCommunityUsers.FirstOrDefault()?.Status ?? EUserMembershipStatus.None
+            );
             _validator.Validate(validatorDto);
 
             _context.Remove(post);

@@ -2,6 +2,7 @@
 {
     public enum EUserInvitationStatus
     {
+        None,
         Recieved,   // Приглашение получено
         Accepted,   // Принял приглашение
         Declined,   // Отверг приглашение

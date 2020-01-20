@@ -6,7 +6,7 @@ namespace KNews.Core.Services.Posts.Exceptions
 {
     public class PostCreateException : BaseRequestException
     {
-        public PostCreateException(int code, string message) : base(code, message)
+        public PostCreateException(int httpCode, int respCode, string message) : base(httpCode, respCode, message)
         {
         }
     }

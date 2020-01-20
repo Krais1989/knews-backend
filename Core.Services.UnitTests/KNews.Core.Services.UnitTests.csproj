@@ -19,4 +19,9 @@
     <ProjectReference Include="..\KNews.Core.Services\KNews.Core.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Posts\Handlers\" />
+    <Folder Include="Users\Handlers\" />
+  </ItemGroup>
+
 </Project>

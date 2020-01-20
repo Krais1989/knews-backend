@@ -39,13 +39,13 @@ namespace KNews.Core.Services.Posts.Handlers
     {
         private readonly ILogger<PostUpdateRequestHandler> _logger;
         private readonly IValidator<PostUpdateValidator> _validator;
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly IOptions<CoreDomainOptions> _options;
 
         public PostUpdateRequestHandler(
             ILogger<PostUpdateRequestHandler> logger,
             IValidator<PostUpdateValidator> validator,
-            NewsContext context,
+            CoreContext context,
             IOptions<CoreDomainOptions> options)
         {
             _logger = logger;
@@ -61,16 +61,16 @@ namespace KNews.Core.Services.Posts.Handlers
                 .FirstOrDefaultAsync(e => e.ID == request.CurUserID);
             var post = await _context.Posts.Include(p => p.Community).FirstOrDefaultAsync();
 
-            var validatorDto = new PostUpdateValidatorDto()
-            {
-                NewTitle = request.NewTitle,
-                NewContent = request.NewContent,
-                PostStatus = post.Status,
-                PostCreateDate = post.CreateDate,
-                CurUserStatus = curUser.Status,
-                CurUserIsAuthor = post.AuthorID == curUser.ID,
-                CurUserMembership = curUser != null ? (EXUserCommunityType?)curUser.XCommunityUsers.First().Type : null
-            };
+            var validatorDto = new PostUpdateValidatorDto
+            (
+                newTitle : request.NewTitle,
+                newContent: request.NewContent,
+                postStatus: post.Status,
+                postCreateDate: post.CreateDate,
+                curUserStatus: curUser.Status,
+                curUserIsAuthor: post.AuthorID == curUser.ID,
+                curUserMembershipStatus: curUser.XCommunityUsers.FirstOrDefault()?.Status ?? EUserMembershipStatus.None
+            );
             _validator.Validate(validatorDto);
 
             post.Title = request.NewTitle;

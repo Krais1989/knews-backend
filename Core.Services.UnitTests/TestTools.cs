@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Moq;
 using System;
 using System.Threading;
@@ -9,11 +10,12 @@ namespace KNews.Core.Services.UnitTests
 {
     public static class TestTools
     {
-        public static readonly CoreDomainOptions CoreOptions = new CoreDomainOptions()
-        {
-            UpdateAvailablePeriod = TimeSpan.FromHours(1),
-            DefaultCommunityID = 1
-        };
+        public static readonly IOptions<CoreDomainOptions> CoreOptions
+            = Options.Create(new CoreDomainOptions()
+            {
+                UpdateAvailablePeriod = TimeSpan.FromHours(1),
+                DefaultCommunityID = 1
+            });
 
         public static ILogger<T> MockLogger<T>() => Mock.Of<ILogger<T>>();
 

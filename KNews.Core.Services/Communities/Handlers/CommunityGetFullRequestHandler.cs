@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using KNews.Core.Entities;
 using KNews.Core.Persistence;
+using KNews.Core.Services.Communities.Entities;
 using KNews.Core.Services.Shared.Mappers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -12,15 +13,6 @@ using System.Threading.Tasks;
 
 namespace KNews.Core.Services.Communities.Handlers
 {
-    public class CommunityFull
-    {
-        public long ID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Rules { get; set; }
-        public ECommunityStatus Status { get; set; }
-    }
-
     public class CommunityGetFullResponse
     {
         public CommunityFull[] Models { get; set; }
@@ -38,12 +30,12 @@ namespace KNews.Core.Services.Communities.Handlers
 
     public class CommunityGetFullRequestHandler : IRequestHandler<CommunityGetFullRequest, CommunityGetFullResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly IValidator<CommunityGetFullRequest> _validator;
         private readonly ILogger<CommunityGetFullRequestHandler> _logger;
         private readonly IEntityMapper<Community, CommunityFull> _communityFullMapper;
 
-        public CommunityGetFullRequestHandler(NewsContext context, IValidator<CommunityGetFullRequest> validator, ILogger<CommunityGetFullRequestHandler> logger)
+        public CommunityGetFullRequestHandler(CoreContext context, IValidator<CommunityGetFullRequest> validator, ILogger<CommunityGetFullRequestHandler> logger)
         {
             _context = context;
             _validator = validator;
@@ -61,7 +53,7 @@ namespace KNews.Core.Services.Communities.Handlers
             var response = new CommunityGetFullResponse();
             response.Models = await _context.Communities.AsNoTracking()
                 .Where(e => request.IDs.Contains(e.ID))
-                .Select(e => _communityFullMapper.Map(e)) // TODO: Проверить генерацию запроса, возможно придется делать Expression
+                .Select(_communityFullMapper.MapExpr)
                 .ToArrayAsync();
 
             return response;

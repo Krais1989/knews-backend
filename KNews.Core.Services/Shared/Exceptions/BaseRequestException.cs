@@ -4,11 +4,13 @@ namespace KNews.Core.Services.Shared.Exceptions
 {
     public class BaseRequestException : Exception
     {
-        public int Code { get; set; }
+        public int HttpCode { get; set; }
+        public int ResponseCode { get; set; }
 
-        public BaseRequestException(int code, string message) : base(message) 
+        public BaseRequestException(int httpCode, int respCode, string message) : base(message) 
         { 
-            Code = code; 
+            HttpCode = httpCode;
+            ResponseCode = respCode;
         }
     }
 }

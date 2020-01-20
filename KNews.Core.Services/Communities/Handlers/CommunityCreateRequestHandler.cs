@@ -31,11 +31,11 @@ namespace KNews.Core.Services.Communities.Handlers
 
     public class CommunityCreateRequestHandler : IRequestHandler<CommunityCreateRequest, CommunityCreateResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly IValidator<CommunityCreateRequest> _validator;
         private readonly ILogger<CommunityCreateRequestHandler> _logger;
 
-        public CommunityCreateRequestHandler(NewsContext context, IValidator<CommunityCreateRequest> validator, ILogger<CommunityCreateRequestHandler> logger)
+        public CommunityCreateRequestHandler(CoreContext context, IValidator<CommunityCreateRequest> validator, ILogger<CommunityCreateRequestHandler> logger)
         {
             _context = context;
             _validator = validator;

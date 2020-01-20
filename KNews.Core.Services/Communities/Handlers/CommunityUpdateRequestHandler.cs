@@ -27,11 +27,11 @@ namespace KNews.Core.Services.Communities.Handlers
 
     public class CommunityUpdateRequestHandler : IRequestHandler<CommunityUpdateRequest, CommunityUpdateResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly IValidator<CommunityUpdateRequest> _validator;
         private readonly ILogger<CommunityUpdateRequestHandler> _logger;
 
-        public CommunityUpdateRequestHandler(NewsContext context, IValidator<CommunityUpdateRequest> validator, ILogger<CommunityUpdateRequestHandler> logger)
+        public CommunityUpdateRequestHandler(CoreContext context, IValidator<CommunityUpdateRequest> validator, ILogger<CommunityUpdateRequestHandler> logger)
         {
             _context = context;
             _validator = validator;

@@ -27,11 +27,11 @@ namespace KNews.Core.Services.Communities.Handlers
 
     public class CommunityDeleteRequestHandler : IRequestHandler<CommunityDeleteRequest, CommunityDeleteResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly IValidator<CommunityDeleteRequest> _validator;
         private readonly ILogger<CommunityDeleteRequestHandler> _logger;
 
-        public CommunityDeleteRequestHandler(NewsContext context, IValidator<CommunityDeleteRequest> validator, ILogger<CommunityDeleteRequestHandler> logger)
+        public CommunityDeleteRequestHandler(CoreContext context, IValidator<CommunityDeleteRequest> validator, ILogger<CommunityDeleteRequestHandler> logger)
         {
             _context = context;
             _validator = validator;

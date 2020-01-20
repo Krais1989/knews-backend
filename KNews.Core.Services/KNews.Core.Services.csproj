@@ -15,4 +15,20 @@
     <ProjectReference Include="..\KNews.Core.Persistence\KNews.Core.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Comments\Exceptions\" />
+    <Folder Include="Notifications\Entities\" />
+    <Folder Include="Notifications\Handlers\" />
+    <Folder Include="Notifications\Exceptions\" />
+    <Folder Include="Notifications\Mappers\" />
+    <Folder Include="Notifications\Validators\" />
+    <Folder Include="Profiles\Entities\" />
+    <Folder Include="Profiles\Exceptions\" />
+    <Folder Include="Profiles\Handlers\" />
+    <Folder Include="Profiles\Mappers\" />
+    <Folder Include="Users\Entities\" />
+    <Folder Include="Users\Exceptions\" />
+    <Folder Include="Users\Mappers\" />
+  </ItemGroup>
+
 </Project>

@@ -36,12 +36,12 @@ namespace KNews.Core.Services.Communities.Handlers
 
     public class CommunityGetShortRequestHandler : IRequestHandler<CommunityGetShortRequest, CommunityGetShortResponse>
     {
-        private readonly NewsContext _context;
+        private readonly CoreContext _context;
         private readonly IValidator<CommunityGetFullRequest> _validator;
         private readonly ILogger<CommunityGetFullRequestHandler> _logger;
         private readonly IEntityMapper<Community, CommunityShort> _communityShortMapper;
 
-        public CommunityGetShortRequestHandler(NewsContext context, IValidator<CommunityGetFullRequest> validator, ILogger<CommunityGetFullRequestHandler> logger, IEntityMapper<Community, CommunityShort> communityShortMapper)
+        public CommunityGetShortRequestHandler(CoreContext context, IValidator<CommunityGetFullRequest> validator, ILogger<CommunityGetFullRequestHandler> logger, IEntityMapper<Community, CommunityShort> communityShortMapper)
         {
             _context = context;
             _validator = validator;
@@ -56,7 +56,7 @@ namespace KNews.Core.Services.Communities.Handlers
 
             var response = new CommunityGetShortResponse();
             response.Models = await _context.Communities.AsNoTracking()
-                .Select(e => _communityShortMapper.Map(e))
+                .Select(_communityShortMapper.MapExpr)
                 .ToArrayAsync();
             return response;
         }

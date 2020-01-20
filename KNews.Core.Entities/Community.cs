@@ -6,32 +6,50 @@ namespace KNews.Core.Entities
     /// <summary>
     /// Право чтения в сообществе
     /// </summary>
-    public enum ECommunityReadPermission : byte
+    public enum ECommunityReadPermissions : byte
     {
         /// <summary>
-        /// Просматривать группу могут все
+        /// Все включая гостей
         /// </summary>
         All = 0,
         /// <summary>
-        /// Просматривать группу могут лишь её участники
+        /// Все прошедний аутентификацию
         /// </summary>
-        MembersOnly
+        Authenticated,
+        /// <summary>
+        /// Участники группы
+        /// </summary>
+        Members
     }
 
     /// <summary>
     /// Право создание постов в сообществе
     /// </summary>
-    public enum ECommunityPostCreatePermission : byte
+    public enum ECommunityPostCreatePermissions : byte
     {
-        All,
-        MembersOnly,
-        ModeratorOnly
+        Authenticated,
+        Members,
+        Moderators
     }
 
-    public enum ECommunityPostDeletePermission : byte
+    public enum ECommunityPostDeletePermissions : byte
     {
-        AuthorOnly,
-        ModeratorOnly
+        Authors,
+        Moderators
+    }
+
+    public enum ECommunityInvitationPermissions : byte
+    {
+        NoOne,
+        Members,
+        Moderators
+    }
+
+    public enum ECommunityJoinPermissions: byte
+    {
+        Allowed,
+        NotAllowed,
+        ByInvitation,
     }
 
     public class Community
@@ -41,17 +59,18 @@ namespace KNews.Core.Entities
         public string Description { get; set; }
         public string Rules { get; set; }
         public ECommunityStatus Status { get; set; }
-        public ECommunityReadPermission ReadPermissions { get; set; }
-        public ECommunityPostCreatePermission CreatePostPermissions { get; set; }
-        public ECommunityPostDeletePermission DeletePermissions { get; set; }
+        public ECommunityReadPermissions ReadPermissions { get; set; }
+        public ECommunityPostCreatePermissions CreatePostPermissions { get; set; }
+        public ECommunityPostDeletePermissions DeletePermissions { get; set; }
+        public ECommunityJoinPermissions JoinPermissions { get; set; }
 
         public DateTime CreateDate { get; set; }
 
-        public long MembersCount { get; set; }
-
-        public bool InvitationsAvailable { get; set; }
+        public ECommunityInvitationPermissions InvitationPermissions { get; set; }
 
         public IEnumerable<XCommunityUser> UserCommunities { get; set; }
         public IEnumerable<XCommunityPost> PostCommunities { get; set; }
+
+        public long MembersCount { get; set; }
     }
 }

@@ -15,5 +15,11 @@ namespace KNews.Core.Services
         /// Период времени с момента создания поста в который можно его редактировать 
         /// </summary>
         public TimeSpan UpdateAvailablePeriod { get; set; }
+
+        public int MaxCommentaryTake { get; set; } = 100;
+        public int MinCommentarySize { get; set; } = 1;
+        public int MaxCommentarySize { get; set; } = 1000;
+
+        public int MaxRibbonPostsPerRequest { get; set; } = 20;
     }
 }

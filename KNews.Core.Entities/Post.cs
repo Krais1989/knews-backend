@@ -2,6 +2,34 @@
 
 namespace KNews.Core.Entities
 {
+    public enum EPostCommentCreatePermissions
+    {
+        NotAllowed,
+        Allowed,
+        AllowedAuthenticated,
+        AllowedCommunityMembers
+    }
+
+    public enum EPostCommentReadPermissions
+    {
+        NotAllowed,
+        Allowed,
+        AllowedAuthenticated,
+        AllowedCommunityMembers
+    }
+
+    public enum EPostCommentUpdatePermissions
+    {
+        NotAllowed,
+        Allowed
+    }
+
+    public enum EPostCommentDeletePermissions
+    {
+        NotAllowed,
+        Allowed
+    }
+
     public class Post
     {
         public long ID { get; set; }
@@ -14,6 +42,13 @@ namespace KNews.Core.Entities
         public DateTime? DeleteDate { get; set; }
         public EPostStatus Status { get; set; }
         public long CommunityID { get; set; }
+
+        public EPostCommentCreatePermissions CommentCreatePermissions { get; set; }
+        public EPostCommentReadPermissions CommentReadPermissions { get; set; }
+        public EPostCommentUpdatePermissions CommentUpdatePermissions { get; set; }
+        public EPostCommentDeletePermissions CommentDeletePermissions { get; set; }
+        
         public Community Community { get; set; }
+        public User Author { get; set; }
     }
 }

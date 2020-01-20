@@ -2,9 +2,6 @@
 
 namespace KNews.Core.Services.Communities.Entities
 {
-    /// <summary>
-    /// Полное сущность Сообщества
-    /// </summary>
     public class CommunityFull
     {
         public long ID { get; set; }

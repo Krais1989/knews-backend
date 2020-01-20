@@ -5,21 +5,19 @@ namespace KNews.Core.Services.Posts.Validators
 {
     public class PostCreateValidatorDto
     {
-        public ECommunityStatus CommunityStatus { get; set; }
-        public ECommunityPostCreatePermission CommunityCreatePermission { get; set; }
-        public EUserStatus AuthorStatus { get; set; }
-        public EXUserCommunityType? CurrentUserMembership { get; set; }
+        public ECommunityStatus CommunityStatus { get; private set; }
+        public ECommunityPostCreatePermissions CommunityCreatePermission { get; private set; }
+        public EUserStatus AuthorStatus { get; private set; }
+        public EUserMembershipStatus CurrentUserMembership { get; private set; }
 
-        public string PostTitle { get; set; }
-        public string PostContent { get; set; }
-
-        public PostCreateValidatorDto() { }
+        public string PostTitle { get; private set; }
+        public string PostContent { get; private set; }
 
         public PostCreateValidatorDto(
             ECommunityStatus communityStatus,
-            ECommunityPostCreatePermission communityCreatePermission,
+            ECommunityPostCreatePermissions communityCreatePermission,
             EUserStatus authorStatus,
-            EXUserCommunityType? currentUserMembership,
+            EUserMembershipStatus currentUserMembership,
             string postTitle,
             string postContent)
         {
@@ -43,13 +41,11 @@ namespace KNews.Core.Services.Posts.Validators
             RuleFor(e => e.AuthorStatus).Equal(EUserStatus.Approved);
             RuleFor(e => e.CommunityStatus).Equal(ECommunityStatus.Approved);
             RuleFor(e => e.CurrentUserMembership)
-                .NotNull()
-                .NotEqual(EXUserCommunityType.None)
-                .When(dto => dto.CommunityCreatePermission == ECommunityPostCreatePermission.MembersOnly);
+                .NotEqual(EUserMembershipStatus.None)
+                .When(dto => dto.CommunityCreatePermission == ECommunityPostCreatePermissions.Members);
             RuleFor(e => e.CurrentUserMembership)
-                .NotNull()
-                .Equal(EXUserCommunityType.Moderator)
-                .When(dto => dto.CommunityCreatePermission == ECommunityPostCreatePermission.ModeratorOnly);
+                .Equal(EUserMembershipStatus.Moderator)
+                .When(dto => dto.CommunityCreatePermission == ECommunityPostCreatePermissions.Moderators);
         }
     }
 }

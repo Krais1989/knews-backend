@@ -22,10 +22,10 @@ namespace KNews.Core.Services.Posts.Handlers
     public class PostGetShortRequestHandler : IRequestHandler<PostGetShortRequest, PostShort>
     {
         private readonly ILogger<PostGetShortRequestHandler> _logger;
-        private readonly IValidator<PostGetShortValidator> _validator;
-        private readonly NewsContext _context;
+        private readonly IValidator<PostGetShortValidatorDto> _validator;
+        private readonly CoreContext _context;
 
-        public PostGetShortRequestHandler(ILogger<PostGetShortRequestHandler> logger, IValidator<PostGetShortValidator> validator, NewsContext context)
+        public PostGetShortRequestHandler(ILogger<PostGetShortRequestHandler> logger, IValidator<PostGetShortValidatorDto> validator, CoreContext context)
         {
             _logger = logger;
             _validator = validator;
@@ -42,13 +42,12 @@ namespace KNews.Core.Services.Posts.Handlers
                 .IncludeFilter(e => e.XCommunityUsers.FirstOrDefault(xcu => xcu.CommunityID == post.CommunityID))
                 .FirstOrDefaultAsync(e => e.ID == request.CurUserID);
 
-            var validatorDto = new PostGetFullValidatorDto()
-            {
-                GetByAuthor = post.AuthorID == curUser.ID,
-                PostStatus = post.Status,
-                CommunityReadPermissions = post.Community.ReadPermissions,
-                MemberStatus = curUser.XCommunityUsers != null ? (EXUserCommunityType?)curUser.XCommunityUsers.First().Type : null,
-            };
+            var validatorDto = new PostGetShortValidatorDto(
+                getByAuthor: post.AuthorID == curUser.ID,
+                postStatus: post.Status,
+                communityReadPermissions: post.Community.ReadPermissions,
+                curUserMembershipStatus: curUser.XCommunityUsers.FirstOrDefault()?.Status ?? EUserMembershipStatus.None
+            );
             _validator.Validate(validatorDto);
 
             var response = new PostShort()

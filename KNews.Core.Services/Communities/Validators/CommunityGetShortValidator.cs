@@ -1,13 +1,19 @@
 ﻿using FluentValidation;
+using KNews.Core.Entities;
 using KNews.Core.Services.Communities.Handlers;
 
 namespace KNews.Core.Services.Communities.Validators
 {
-    public class CommunityGetShortValidator : AbstractValidator<CommunityGetShortRequest>
+    public class CommunityGetShortValidatorDto 
+    {
+        public ECommunityStatus CommunityStatus { get; set; }
+    };
+
+    public class CommunityGetShortValidator : AbstractValidator<CommunityGetShortValidatorDto>
     {
         public CommunityGetShortValidator()
         {
-            RuleFor(e => e.IDs).NotNull().Must(e => e.Length > 0 && e.Length < 1000);
+            RuleFor(dto => dto.CommunityStatus).NotEqual(ECommunityStatus.Deleted);
         }
     }
 }

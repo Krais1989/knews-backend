@@ -1,27 +1,44 @@
 ﻿using FluentValidation;
 using KNews.Core.Entities;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace KNews.Core.Services.Posts.Validators
 {
     public class PostUpdateValidatorDto
-    {        
-        public EXUserCommunityType? CurUserMembership { get; set; }
+    {
+        public EUserMembershipStatus CurUserMembership { get; private set; }
+        public EUserStatus CurUserStatus { get; private set; }
+        public bool CurUserIsAuthor { get; private set; }
+        public EPostStatus PostStatus { get; private set; }
+        public DateTime PostCreateDate { get; private set; }
+        public string NewTitle { get; private set; }
+        public string NewContent { get; private set; }
 
-        public EUserStatus CurUserStatus { get; set; }
-        public bool CurUserIsAuthor { get; set; }
-
-        public EPostStatus PostStatus { get; set; }
-        public DateTime PostCreateDate { get; set; }
-        public string NewTitle { get; set; }
-        public string NewContent { get; set; }
+        public PostUpdateValidatorDto(
+            EUserMembershipStatus curUserMembershipStatus,
+            EUserStatus curUserStatus,
+            bool curUserIsAuthor,
+            EPostStatus postStatus,
+            DateTime postCreateDate,
+            string newTitle,
+            string newContent)
+        {
+            CurUserMembership = curUserMembershipStatus;
+            CurUserStatus = curUserStatus;
+            CurUserIsAuthor = curUserIsAuthor;
+            PostStatus = postStatus;
+            PostCreateDate = postCreateDate;
+            NewTitle = newTitle;
+            NewContent = newContent;
+        }
     }
 
     public class PostUpdateValidator : AbstractValidator<PostUpdateValidatorDto>
     {
-        private readonly CoreDomainOptions _options;
+        private readonly IOptions<CoreDomainOptions> _options;
 
-        public PostUpdateValidator(CoreDomainOptions options)
+        public PostUpdateValidator(IOptions<CoreDomainOptions> options)
         {
             _options = options;
 
@@ -35,7 +52,7 @@ namespace KNews.Core.Services.Posts.Validators
              */
 
             RuleFor(dto => dto.PostCreateDate)
-                .GreaterThan(DateTime.UtcNow - _options.UpdateAvailablePeriod)
+                .GreaterThan(DateTime.UtcNow - _options.Value.UpdateAvailablePeriod)
                 .When(dto => dto.CurUserIsAuthor)
                 .WithMessage($"Post update period has been expired.");
 
@@ -46,7 +63,7 @@ namespace KNews.Core.Services.Posts.Validators
                 .When(dto => dto.PostStatus == EPostStatus.Created);
 
             RuleFor(dto => dto.CurUserIsAuthor).Equal(true).When(dto => dto.PostStatus == EPostStatus.Approved);
-            RuleFor(dto => dto.CurUserMembership).Equal(EXUserCommunityType.Moderator).When(dto => dto.PostStatus == EPostStatus.Check);
+            RuleFor(dto => dto.CurUserMembership).Equal(EUserMembershipStatus.Moderator).When(dto => dto.PostStatus == EPostStatus.Check);
             RuleFor(dto => dto.PostStatus)
                 .NotEqual(EPostStatus.Deleted)
                     .WithMessage($"Post not found.")
