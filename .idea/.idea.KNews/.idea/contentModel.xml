@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Norix\.nuget\packages\microsoft.net.test.sdk\16.2.0\build\netcoreapp1.0" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\Norix\.nuget\packages\microsoft.net.test.sdk\16.4.0\build\netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="C:\Users\Norix\.nuget\packages\microsoft.testplatform.testhost\16.4.0\build\netcoreapp2.1\x64\testhost.dll" t="Include" />
+    <e p="C:\Users\Norix\.nuget\packages\microsoft.testplatform.testhost\16.4.0\build\netcoreapp2.1\x64\testhost.exe" t="Include" />
+    <e p="C:\Users\Norix\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\nunit.engine.api.dll" t="Include" />
+    <e p="C:\Users\Norix\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\nunit.engine.dll" t="Include" />
+    <e p="C:\Users\Norix\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\NUnit3.TestAdapter.dll" t="Include" />
+    <e p="C:\Users\Norix\.nuget\packages\nunit3testadapter\3.15.1\build\netcoreapp2.0\NUnit3.TestAdapter.pdb" t="Include" />
+    <e p="C:\Users\Norix\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Norix\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_KNews.-1852725811.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Norix\source\repos\KNews" t="IncludeFlat">
+      <e p="Core" t="Include">
+        <e p="Tests" t="Include" />
+      </e>
+      <e p="Core.Services.UnitTests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Comments" t="Include">
+          <e p="CommentCreateValidatorTest.cs" t="Include" />
+          <e p="CommentDeleteValidatorTest.cs" t="Include" />
+          <e p="CommentGetForPostValidatorTest.cs" t="Include" />
+          <e p="CommentUpdateValidatorTest.cs" t="Include" />
+        </e>
+        <e p="Communities" t="Include">
+          <e p="Handlers" t="Include">
+            <e p="CommunityFindRequestHandlerTest.cs" t="Include" />
+          </e>
+          <e p="Validators" t="Include">
+            <e p="CommunityCreateValidatorTest.cs" t="Include" />
+            <e p="CommunityDeleteValidatorTest.cs" t="Include" />
+            <e p="CommunityFindValidatorTest.cs" t="Include" />
+            <e p="CommunityGetFullValidatorTest.cs" t="Include" />
+            <e p="CommunityGetShortValidatorTest.cs" t="Include" />
+            <e p="CommunityUpdateValidatorTest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="KNews.Core.Services.UnitTests.csproj" t="IncludeRecursive" />
+        <e p="Members" t="Include">
+          <e p="Handlers" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="MemberInviteValidatorTest.cs" t="Include" />
+            <e p="MemberJoinValidatorTest.cs" t="Include" />
+            <e p="MemberLeaveValidatorTest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Core.Services.UnitTests.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Posts" t="Include">
+          <e p="Handlers" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="PostCreateValidatorTest.cs" t="Include" />
+            <e p="PostDeleteValidatorTest.cs" t="Include" />
+            <e p="PostGetFullValidatorTest.cs" t="Include" />
+            <e p="PostGetShortValidatorTest.cs" t="Include" />
+            <e p="PostUpdateValidatorTest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TestNewsContextBuilder.cs" t="Include" />
+        <e p="TestTools.cs" t="Include" />
+      </e>
+      <e p="Identity" t="Include">
+        <e p="Tests" t="Include" />
+      </e>
+      <e p="Infrastructure" t="Include" />
+      <e p="KNews.Core.Entities" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Comment.cs" t="Include" />
+        <e p="CommentChange.cs" t="Include" />
+        <e p="Community.cs" t="Include" />
+        <e p="ECommentStatus.cs" t="Include" />
+        <e p="ECommunityStatus.cs" t="Include" />
+        <e p="EPostStatus.cs" t="Include" />
+        <e p="EUserInvitationStatus.cs" t="Include" />
+        <e p="EUserMembershipStatus.cs" t="Include" />
+        <e p="KNews.Core.Entities.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Core.Entities.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Post.cs" t="Include" />
+        <e p="PostContentChange.cs" t="Include" />
+        <e p="PostLike.cs" t="Include" />
+        <e p="PostStatusChange.cs" t="Include" />
+        <e p="Profile.cs" t="Include" />
+        <e p="ProfileNotifyPrefs.cs" t="Include" />
+        <e p="ProfileRibbonPrefs.cs" t="Include" />
+        <e p="ProfileSendingPrefs.cs" t="Include" />
+        <e p="Tag.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+        <e p="UserInvitation.cs" t="Include" />
+        <e p="XCommunityPost.cs" t="Include" />
+        <e p="XCommunityUser.cs" t="Include" />
+        <e p="XPostTag.cs" t="Include" />
+      </e>
+      <e p="KNews.Core.Persistence" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CoreContext.cs" t="Include" />
+        <e p="EntityConfigurations" t="Include">
+          <e p="CommunityEntityConfiguration.cs" t="Include" />
+        </e>
+        <e p="KNews.Core.Persistence.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Core.Persistence.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="KNews.Core.Services" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Comments" t="Include">
+          <e p="Entities" t="Include">
+            <e p="CommentForPost.cs" t="Include" />
+            <e p="CommentForRibbon.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include" />
+          <e p="Handlers" t="Include">
+            <e p="CommentCreateRequestHandler.cs" t="Include" />
+            <e p="CommentDeleteRequestHandler.cs" t="Include" />
+            <e p="CommentGetForPostRequestHandler.cs" t="Include" />
+            <e p="CommentUpdateRequestHandler.cs" t="Include" />
+          </e>
+          <e p="Mappers" t="Include">
+            <e p="CommentForPostMapper.cs" t="Include" />
+            <e p="CommentForRibbonMapper.cs" t="Include" />
+          </e>
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="CommentCreateValidator.cs" t="Include" />
+            <e p="CommentDeleteValidator.cs" t="Include" />
+            <e p="CommentGetForPostValidator.cs" t="Include" />
+            <e p="CommentUpdateValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Communities" t="Include">
+          <e p="Entities" t="Include">
+            <e p="CommunityFull.cs" t="Include" />
+            <e p="CommunityShort.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include">
+            <e p="CommunityNotFoundException.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="CommunityCreateRequestHandler.cs" t="Include" />
+            <e p="CommunityDeleteRequestHandler.cs" t="Include" />
+            <e p="CommunityFindRequestHandler.cs" t="Include" />
+            <e p="CommunityGetFullRequestHandler.cs" t="Include" />
+            <e p="CommunityGetShortRequestHandler.cs" t="Include" />
+            <e p="CommunityUpdateRequestHandler.cs" t="Include" />
+          </e>
+          <e p="Mappers" t="Include">
+            <e p="CommunityFullMapper.cs" t="Include" />
+            <e p="CommunityShortMapper.cs" t="Include" />
+          </e>
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="CommunityCreateValidator.cs" t="Include" />
+            <e p="CommunityDeleteValidator.cs" t="Include" />
+            <e p="CommunityFindValidator.cs" t="Include" />
+            <e p="CommunityGetFullValidator.cs" t="Include" />
+            <e p="CommunityGetShortValidator.cs" t="Include" />
+            <e p="CommunityUpdateValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="CoreDomainOptions.cs" t="Include" />
+        <e p="KNews.Core.Services.csproj" t="IncludeRecursive" />
+        <e p="Members" t="Include">
+          <e p="Entities" t="Include" />
+          <e p="Exceptions" t="Include" />
+          <e p="Handlers" t="Include">
+            <e p="MemberExpelCommunityRequestHandler.cs" t="Include" />
+            <e p="MemberInviteCommunityRequestHandler.cs" t="Include" />
+            <e p="MemberJoinCommunityRequestHandler.cs" t="Include" />
+            <e p="MemberLeaveCommunityRequestHandler.cs" t="Include" />
+          </e>
+          <e p="Mappers" t="Include" />
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="MemberExpelCommunityValidator.cs" t="Include" />
+            <e p="MemberInviteCommunityValidator.cs" t="Include" />
+            <e p="MemberJoinCommunityValidator.cs" t="Include" />
+            <e p="MemberLeaveCommunityValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Notifications" t="Include">
+          <e p="Entities" t="Include" />
+          <e p="Exceptions" t="Include" />
+          <e p="Handlers" t="Include" />
+          <e p="Mappers" t="Include" />
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Core.Services.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PostRibbons" t="Include">
+          <e p="Entities" t="Include">
+            <e p="PostRibbon.cs" t="Include" />
+            <e p="PostRibbonOptions.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="PostRibbonGetRequestHandler.cs" t="Include" />
+          </e>
+          <e p="Mappers" t="Include">
+            <e p="PostRibbonMapper.cs" t="Include" />
+          </e>
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="PostRibbonGetValidator.cs" t="Include" />
+            <e p="PostRibbonSetOptionsValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Posts" t="Include">
+          <e p="Entities" t="Include">
+            <e p="PostFull.cs" t="Include" />
+            <e p="PostShort.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include">
+            <e p="PostCreateException.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="PostCreateRequestHandler.cs" t="Include" />
+            <e p="PostDeleteRequestHandler.cs" t="Include" />
+            <e p="PostFindRequestHandler.cs" t="Include" />
+            <e p="PostGetFromCommunityRequestHandler.cs" t="Include" />
+            <e p="PostGetFullRequestHandler.cs" t="Include" />
+            <e p="PostGetShortRequestHandler.cs" t="Include" />
+            <e p="PostUpdateRequestHandler.cs" t="Include" />
+          </e>
+          <e p="Mappers" t="Include">
+            <e p="PostFullMapper.cs" t="Include" />
+            <e p="PostShortMapper.cs" t="Include" />
+          </e>
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="PostCreateValidator.cs" t="Include" />
+            <e p="PostDeleteValidator.cs" t="Include" />
+            <e p="PostFindValidator.cs" t="Include" />
+            <e p="PostGetFullValidator.cs" t="Include" />
+            <e p="PostGetRibbonValidator.cs" t="Include" />
+            <e p="PostGetShortValidator.cs" t="Include" />
+            <e p="PostUpdateValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Profiles" t="Include">
+          <e p="Entities" t="Include">
+            <e p="ProfileFull.cs" t="Include" />
+            <e p="ProfileShort.cs" t="Include" />
+          </e>
+          <e p="Exceptions" t="Include" />
+          <e p="Handlers" t="Include" />
+          <e p="Mappers" t="Include" />
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="ProfileBanValidator.cs" t="Include" />
+            <e p="ProfileDeleteValidator.cs" t="Include" />
+            <e p="ProfileGetFullValidator.cs" t="Include" />
+            <e p="ProfileGetShortValidator.cs" t="Include" />
+            <e p="ProfileInitializeValidator.cs" t="Include" />
+            <e p="ProfileUpdateValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Shared" t="Include">
+          <e p="Exceptions" t="Include">
+            <e p="BaseRequestException.cs" t="Include" />
+          </e>
+          <e p="IRepositoryModifyRequest.cs" t="Include" />
+          <e p="Mappers" t="Include">
+            <e p="IEntityMapper.cs" t="Include" />
+          </e>
+        </e>
+        <e p="SResponseCodes.cs" t="Include" />
+      </e>
+      <e p="KNews.Core.WebApi" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="BaseController.cs" t="Include" />
+          <e p="CommunityController.cs" t="Include" />
+        </e>
+        <e p="KNews.Core.WebApi.csproj" t="IncludeRecursive" />
+        <e p="Models" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Core.WebApi.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="KNews.Identity.Entities" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="KNews.Identity.Entities.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Identity.Entities.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Role.cs" t="Include" />
+        <e p="RoleClaim.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+        <e p="UserClaim.cs" t="Include" />
+        <e p="UserLogin.cs" t="Include" />
+        <e p="UserRole.cs" t="Include" />
+        <e p="UserToken.cs" t="Include" />
+      </e>
+      <e p="KNews.Identity.Persistence" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="IdentityContext.cs" t="Include" />
+        <e p="KNews.Identity.Persistence.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Identity.Persistence.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="KNews.Identity.Services" t="IncludeRecursive">
+        <e p="Accounts" t="Include">
+          <e p="Entities" t="Include" />
+          <e p="Exceptions" t="Include">
+            <e p="AccountRegistrationException.cs" t="Include" />
+            <e p="AccountRegistrationUserExistsException.cs" t="Include" />
+            <e p="AccountRegistrationValidatorException.cs" t="Include" />
+          </e>
+          <e p="Handlers" t="Include">
+            <e p="AccountChangePasswordRequestHandler.cs" t="Include" />
+            <e p="AccountDeleteRequestHandler.cs" t="Include" />
+            <e p="AccountEmailConfirmationRequestHandler.cs" t="Include" />
+            <e p="AccountPhoneConfirmationRequestHandler.cs" t="Include" />
+            <e p="AccountPunishRequestHandler.cs" t="Include" />
+            <e p="AccountRegistrationRequestHandler.cs" t="Include" />
+          </e>
+          <e p="README.MD" t="Include" />
+          <e p="Validators" t="Include">
+            <e p="AccountChangePasswordValidator.cs" t="Include" />
+            <e p="AccountDeleteValidator.cs" t="Include" />
+            <e p="AccountEmailConfirmationValidator.cs" t="Include" />
+            <e p="AccountPhoneConfirmationValidator.cs" t="Include" />
+            <e p="AccountPunishValidator.cs" t="Include" />
+            <e p="AccountRegistrationValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Authentications" t="Include">
+          <e p="Entities" t="Include" />
+          <e p="Exceptions" t="Include" />
+          <e p="Handlers" t="Include">
+            <e p="EmailPasswordSignInRequestHandler.cs" t="Include" />
+            <e p="RefreshTokenRequestHandler.cs" t="Include" />
+          </e>
+          <e p="Validators" t="Include">
+            <e p="EmailPasswordSignInValidator.cs" t="Include" />
+            <e p="RefreshTokenValidator.cs" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="GResponseCodes.cs" t="Include" />
+        <e p="IdentityServiceExtentions.cs" t="Include" />
+        <e p="JwtSettings.cs" t="Include" />
+        <e p="KNews.Identity.Services.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Identity.Services.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Services" t="Include">
+          <e p="IdentityRoleManager.cs" t="Include" />
+          <e p="IdentitySignInManager.cs" t="Include" />
+          <e p="IdentityUserManager.cs" t="Include" />
+          <e p="IJWTFactory.cs" t="Include" />
+          <e p="JwtFactory.cs" t="Include" />
+        </e>
+        <e p="Shared" t="Include">
+          <e p="Exceptions" t="Include">
+            <e p="BaseResponseException.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Utils" t="Include">
+          <e p="IdentityUserExtensions.cs" t="Include" />
+        </e>
+      </e>
+      <e p="KNews.Identity.Services.UnitTests" t="IncludeRecursive">
+        <e p="Accounts" t="Include">
+          <e p="Validators" t="Include">
+            <e p="AccountDeleteValidatorTest.cs" t="Include" />
+            <e p="AccountEmailConfirmationValidatorTest.cs" t="Include" />
+            <e p="AccountPhoneConfirmationValidatorTest.cs" t="Include" />
+            <e p="AccountPunishValidatorTest.cs" t="Include" />
+            <e p="AccountRegistrationValidatorTest.cs" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="KNews.Identity.Services.UnitTests.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Identity.Services.UnitTests.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="KNews.Identity.WebApi" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="appsettings.Production.json" t="Include" />
+        <e p="appsettings.Staging.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
+          <e p="AuthController.cs" t="Include" />
+        </e>
+        <e p="KNews.Identity.WebApi.csproj" t="IncludeRecursive" />
+        <e p="Middlewares" t="Include">
+          <e p="ExceptionHandlerMiddleware.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="KNews.Identity.WebApi.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+      </e>
+      <e p="KNews.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Presentation" t="Include" />
+    </e>
+  </component>
+</project>

@@ -4,10 +4,16 @@ namespace KNews.Core.Entities
 {
     public enum EUserStatus
     {
+        None,
         Created,
         Approved,
         Banned,
         Deleted
+    }
+
+    public class Address
+    {
+
     }
 
     public class User

@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
-namespace KNews.Identity.Api
+namespace KNews.Identity.WebApi
 {
     public class Program
     {
@@ -21,6 +17,12 @@ namespace KNews.Identity.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .ConfigureAppConfiguration((host, cfg) =>
+                {
+                    cfg.AddJsonFile($"appsettings.json", optional: false, reloadOnChange: false);
+                    cfg.AddJsonFile($"appsettings.{host.HostingEnvironment.EnvironmentName}.json", optional: false, reloadOnChange: true);
+                })
+                .UseSerilog((context, log) => { log.ReadFrom.Configuration(context.Configuration); });
     }
 }

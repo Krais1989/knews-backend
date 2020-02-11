@@ -22,13 +22,12 @@
     <Folder Include="Notifications\Exceptions\" />
     <Folder Include="Notifications\Mappers\" />
     <Folder Include="Notifications\Validators\" />
-    <Folder Include="Profiles\Entities\" />
     <Folder Include="Profiles\Exceptions\" />
     <Folder Include="Profiles\Handlers\" />
     <Folder Include="Profiles\Mappers\" />
-    <Folder Include="Users\Entities\" />
-    <Folder Include="Users\Exceptions\" />
-    <Folder Include="Users\Mappers\" />
+    <Folder Include="Members\Entities\" />
+    <Folder Include="Members\Exceptions\" />
+    <Folder Include="Members\Mappers\" />
   </ItemGroup>
 
 </Project>

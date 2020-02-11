@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Posts\Handlers\" />
-    <Folder Include="Users\Handlers\" />
+    <Folder Include="Members\Handlers\" />
   </ItemGroup>
 
 </Project>
